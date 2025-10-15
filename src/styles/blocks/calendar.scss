@@ -1,12 +1,18 @@
 @use 'sass:list';
 
-.calendar {
-  width: ($cell * $columns) + ($gap * ($columns - 1));
+.calendar-wrapper {
+  width: 100vw;
   height: 100vh;
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calendar {
+  width: ($cell * $columns) + (6 * $gap) + $padding;
+  padding: 0 $padding / 2;
+  display: flex;
   flex-wrap: wrap;
-  margin: auto;
-  place-content: center flex-start;
   box-sizing: border-box;
   gap: $gap;
 
@@ -24,7 +30,7 @@
     transition: all 0.5s;
 
     @for $n from 1 through 31 {
-      &:nth-child(#{$n}):before {
+      &:nth-child(#{$n})::before {
         content: '#{$n}';
       }
     }
